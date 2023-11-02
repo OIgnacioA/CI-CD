@@ -1,0 +1,37 @@
+name: infraestructura Deplyment
+on: 
+    push: 
+     branches: ["main"]
+     #paths : 
+     # -'infraestructure/**'
+  
+jobs:
+    deploy:
+      name: Terraform settings
+      runs-on: ubuntu-latest
+      env: 
+        AZURE_AD_CLIET_ID:  ${{secrets.AZURE_AD_CLIET_ID}} 
+        AZURE_AD_CLIET_SECRET: ${{secrets.AZURE_AD_CLIET_SECRET}} 
+        AZURE_SUBSCRIPTION_ID: ${{secrets.AZURE_SUBSCRIPTION_ID}} 
+        AZURE_AD_TENANT_ID : ${{secrets.AZURE_AD_TENANT_ID}} 
+      
+      steps:
+       - name: checkout the repo
+         uses: actions/checkout@v3
+         
+       - name: Terraform init 
+         run: terraform init  -backend-confing ="sas_token={{ secrets.SAS_TOKEN}}"
+         working-directory: ./infraestructure
+         
+       - name: Terraform validate
+         run: terraform validate
+         working-directory: ./infraestructure
+
+       - name: Terraform plan
+         run: terraform plan -var-file terraform.tfvars -out-plan.out
+         working-directory: ./infraestructure
+         
+       - name: Terraform apply
+         run: terraform apply -var-file terraform.tfvars -auto-appove
+         working-directory: ./infraestructure
+
