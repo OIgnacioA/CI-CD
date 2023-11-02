@@ -10,9 +10,9 @@ jobs:
   deploy:
   name: Terraform settings
   runs-on: ubuntu-latest
-  steps:
-   -name: checkout the repo
+   steps:
+  - name: checkout the repo
     uses: actions/checkout@v3
-   -name: Terraform version
+  - name: Terraform version
     run: terraform version
     
