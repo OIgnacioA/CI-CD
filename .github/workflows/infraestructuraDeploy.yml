@@ -20,7 +20,7 @@ jobs:
          uses: actions/checkout@v3
          
        - name: Terraform init 
-         run: terraform init  -backend-confing ="sas_token={{ secrets.SAS_TOKEN}}"
+         run: terraform init -backend-config="sas_token=${{ secrets.SAS_TOKEN }}"
          working-directory: ./infraestructure
          
        - name: Terraform validate
