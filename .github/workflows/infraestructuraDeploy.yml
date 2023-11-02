@@ -1,18 +1,17 @@
 name: infraestructura Deplyment
-
 on: 
-  push: 
-   branches ["main"]
-   #paths : 
+    push: 
+     branches: ["main"]
+    #paths : 
     #  -'infraestructure/**'
-
+  
 jobs:
-  deploy:
-  name: Terraform settings
-  runs-on: ubuntu-latest
-   steps:
-  - name: checkout the repo
-    uses: actions/checkout@v3
-  - name: Terraform version
-    run: terraform version
-    
+    deploy:
+      name: Terraform settings
+      runs-on: ubuntu-latest
+      steps:
+       - name: checkout the repo
+         uses: actions/checkout@v3
+       - name: Terraform version
+         run: terraform version
+        
