@@ -1,4 +1,4 @@
-provider "azurerm" {
+provider "hashicorp/azure" {
   features{}
   skip_provider_registration = true
 
