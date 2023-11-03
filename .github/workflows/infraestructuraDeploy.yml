@@ -17,16 +17,6 @@ jobs:
       
       steps:
 
-       - name: Set Terraform version
-         run: terraform --version
-          
-       - name: Install Terraform 1.3.0
-         if: ${{ steps.set-terraform-version.outputs.version < '1.3.0' }}
-         run: |
-           wget https://releases.hashicorp.com/terraform/1.3.0/terraform-1.3.0-linux-amd64.zip
-           unzip terraform-1.3.0-linux-amd64.zip
-           mv terraform /usr/local/bin
-
        - name: checkout the repo
          uses: actions/checkout@v3
          
