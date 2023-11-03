@@ -1,4 +1,4 @@
-provider "azure" {
+provider "azurerm" {
   features{}
   skip_provider_registration = true
 
