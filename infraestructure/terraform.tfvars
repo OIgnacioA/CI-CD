@@ -1,3 +1,3 @@
-rg_name = "containers_test"
+rg_name = "containers-test"
 location = "East US 2"
 container_image = "sehent/pagina01:tagname" 
